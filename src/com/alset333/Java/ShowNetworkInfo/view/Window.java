@@ -13,10 +13,10 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
-import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.DefaultEditorKit;
 
+@SuppressWarnings("serial")
 public class Window extends JFrame {
 	JPanel mainPanel;
 	JPanel itemPanel;
@@ -46,7 +46,6 @@ public class Window extends JFrame {
 		addItem("IPv4 Address via OS", "127.0.0.1");
 		addItem("five", "six");
 
-		
 		mainPanel.add(itemPanel);
 		addCentered(new JButton("Refresh"));
 
@@ -54,7 +53,11 @@ public class Window extends JFrame {
 
 		pack();
 		setResizable(false);
-		setVisible(true);
+	}
+
+	private void addCentered(JComponent c) {
+		c.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+		mainPanel.add(c);
 	}
 
 	private void addItem(String name, String value) {
@@ -66,11 +69,6 @@ public class Window extends JFrame {
 		v.setComponentPopupMenu(popupMenu);
 		itemPanel.add(v);
 
-	}
-
-	private void addCentered(JComponent c) {
-		c.setAlignmentX(JComponent.CENTER_ALIGNMENT);
-		mainPanel.add(c);
 	}
 
 }
